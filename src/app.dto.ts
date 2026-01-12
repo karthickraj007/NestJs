@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty, IsNumber } from "class-validator"
+import { IsString, IsNotEmpty, IsNumber, IsMongoId } from "class-validator"
 
 export class AppDto{
 
@@ -13,4 +13,8 @@ export class AppDto{
     @IsNotEmpty()
     @IsString()
     city:string
+
+    @IsNotEmpty()
+    @IsMongoId()
+    productId:string
 }

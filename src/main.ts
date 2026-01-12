@@ -13,7 +13,7 @@ async function bootstrap() {
     })
   app.useGlobalPipes(pipe)
   app.use(appMiddleware)
-  app.useGlobalGuards(new AuthGuard());
+  //app.useGlobalGuards(new AuthGuard());
   app.useGlobalInterceptors(new LoggingInterceptor())
   await app.listen(process.env.PORT ?? 3000, ()=>{
     console.log("server is listening on 3000")

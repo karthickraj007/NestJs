@@ -32,4 +32,9 @@ export class AppController {
   async loginUser(@Body() user:any ){
     return await this.appService.loginUser(user)
   }
+
+  @Post('/addProduct')
+  async Product(@Body() item:any ){
+    return await this.appService.addProduct(item)
+  }
 }
