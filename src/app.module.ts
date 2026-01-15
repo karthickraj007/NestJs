@@ -3,6 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppItem, AppStudent, itemSchema, studentSchema } from './app.schema';
+import { CampaignModule } from './campaign/campaign.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
@@ -10,9 +12,12 @@ import { AppItem, AppStudent, itemSchema, studentSchema } from './app.schema';
     MongooseModule.forRoot('mongodb://localhost:27017/product', { connectionName: 'product' }),
     MongooseModule.forFeature([
       {name : AppStudent.name, schema : studentSchema},
-      {name : AppItem.name, schema : itemSchema}],
+      {name : AppItem.name, schema : itemSchema}
+    ],
       'student'),
-    MongooseModule.forFeature([{name : AppItem.name, schema : itemSchema}], 'product')
+    MongooseModule.forFeature([{name : AppItem.name, schema : itemSchema}], 'product'),
+    CampaignModule,
+    ScheduleModule.forRoot()
   ],
   controllers: [AppController],
   providers: [AppService],
